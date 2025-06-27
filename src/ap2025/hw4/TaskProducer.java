@@ -27,7 +27,7 @@ public class TaskProducer implements Runnable {
         for (int i = 0; i < numberOfTasksToProduce && !shutdownRequested; i++) {
             try {
                 int taskId = taskCounter.getAndIncrement();
-                // TODO: Create ap2025.hw4.Task with taskId and Assign a random priority (HIGH, MEDIUM, or LOW) to the task.
+                // _TO_DO: Create ap2025.hw4.Task with taskId and Assign a random priority (HIGH, MEDIUM, or LOW) to the task.
                 //  Get the correct CustomBlockingTaskQueue instance from the 'priorityQueues' map
                 //  based on the task's 'priority'. implement the rest based on the document.
 
@@ -39,9 +39,9 @@ public class TaskProducer implements Runnable {
 
                 BlockingTaskQueue taskQueue = priorityQueues.get(taskPriority);
                 taskQueue.put(task);
-                synchronized (globalTaskNotificationLock) {
-                    globalTaskNotificationLock.notifyAll();
-                }
+                // PASTE THIS CODE INTO THE for-loop IN THE run() METHOD
+
+
                 // end of your implementation
 
                 Thread.sleep(random.nextInt(151) + 50);

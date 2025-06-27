@@ -25,7 +25,7 @@ public class TaskConsumer implements Runnable {
             while (true) {
                 Task task = null;
 
-                // TODO: Implement the core logic for a worker to get a task, respecting priorities and shutdown.
+                // _TO_DO: Implement the core logic for a worker to get a task, respecting priorities and shutdown.
                 // start of your implementation
 
                 synchronized (globalTaskNotificationLock) {
@@ -39,15 +39,11 @@ public class TaskConsumer implements Runnable {
                             }
                         }
                     }
+                    globalTaskNotificationLock.notifyAll();
                 }
                 if(shutdownSignalReceived && task == null){
                     break;
                 }
-
-
-
-
-
 
                 // end of your implementation
                 // gotten the task and starting to process it now
@@ -85,7 +81,7 @@ public class TaskConsumer implements Runnable {
 
     public void signalShutdown() {
         shutdownSignalReceived = true;
-        // TODO: signal shutDown
+        // _TO_DO: signal shutDown
         // Crucially, notify any workers waiting on the global lock so they can
         // re-evaluate their conditions (especially the shutdown condition).
         synchronized (globalTaskNotificationLock) {
