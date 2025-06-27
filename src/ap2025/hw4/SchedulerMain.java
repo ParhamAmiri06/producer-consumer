@@ -44,10 +44,10 @@ public class SchedulerMain {
         Thread p1 = new Thread(taskProducer01, "Producer-2001");
         Thread p2 = new Thread(taskProducer02, "Producer-2002");
 
-        ShutDown sh = new ShutDown();
-        Thread t1 = new Thread(sh);
-        t1.setDaemon(true);
-        t1.start();
+        //ShutDown sh = new ShutDown();
+        //Thread t1 = new Thread(sh);
+        //t1.setDaemon(true);
+        //t1.start();
 
         c1.start();
         c2.start();

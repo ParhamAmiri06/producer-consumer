@@ -21,6 +21,7 @@ public class BlockingTaskQueue {
     public void put(Task task) throws InterruptedException {
         // _TO_DO: ap2025.hw4.BlockingTaskQueue put method
         synchronized (globalTaskNotificationLock) {
+            Canceler.cancel(task);
             while (size() >= capacity) {
                 globalTaskNotificationLock.wait();
             }
@@ -47,10 +48,13 @@ public class BlockingTaskQueue {
     public synchronized Task poll() {
         // _TO_DO: ap2025.hw4.BlockingTaskQueue poll method (non-blocking)
         //  should return a ap2025.hw4.Task instead of null
-        if(!isEmpty()){
-            return queue.remove(0);
+        while (!isEmpty()){
+            Task task =  queue.remove(0);
+            if (!task.isCancled()) {
+                return task;
+            }
+            System.out.println("vaiiiiii");
         }
-
         return null;
     }
 
