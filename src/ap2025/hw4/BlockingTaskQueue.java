@@ -53,7 +53,7 @@ public class BlockingTaskQueue {
             if (!task.isCancled()) {
                 return task;
             }
-            System.out.println("vaiiiiii");
+            System.out.println("the task was cancled");
         }
         return null;
     }
