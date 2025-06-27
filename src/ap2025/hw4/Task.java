@@ -17,7 +17,7 @@ public class Task {
     }
 
     public synchronized void cancel(){
-        cancled = true;
+        //cancled = true;
     }
 
     public int getId() {
